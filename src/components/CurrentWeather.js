@@ -1,7 +1,67 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
 
-const CurrentWeather = ({city}) => {
-  const [data, setData] = useState();
+const WeatherCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  width: 30%;
+  border: 1px solid #808080;
+  border-radius: 20px;
+  padding: 1rem;
+`
+const SmallDetails = styled.span`
+  font-size: 0.8rem;
+  color: #808080;
+  text-align: center;
+`
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  h1 {
+    margin: 0;
+    font-size: calc(0.8rem + 1vw);
+  }
+`
+const Icon = styled.img`
+  width: 100%;
+  height: auto;
+`
+
+const Condition = styled.h2`
+  text-align: center;
+  padding-bottom: 0.5rem;
+letter-spacing:1px;
+  margin: 0;
+  font-size: calc(0.5rem + 1vw);
+`
+const Description = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+`
+const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  font-size: 0.8rem;
+  color: #808080;
+  span {
+    font-size: 1rem;
+    color: #000;
+  }
+`
+
+const Error = styled.div`
+color:rgba(255,0,0,0.8);
+text-transform: capitalize;
+text-align:center;
+`
+const CurrentWeather = ({ city }) => {
+  const [data, setData] = useState()
 
   useEffect(() => {
     fetch(
@@ -13,34 +73,39 @@ const CurrentWeather = ({city}) => {
 
   return data ? (
     <div>
-      {
-          (data.cod === 200) && <div>
-          <span>
+      {data.cod === 200 && (
+        <WeatherCard>
+          <SmallDetails>
             {new Date(data.dt * 1000).toLocaleTimeString()},{' '}
             {new Date(data.dt * 1000).toDateString()}
-          </span>
-          <img
-            src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-            width={100}
-            height={100}
-            alt='weather condition'
-          />
-          <h1>{data.main.temp}</h1>
-          <h2>{data.weather[0].main}</h2>
-          <div>
-            Humidity: <span>{data.main.humidity}</span>
-          </div>
-          <div>
-            Wind speed: <span>{data.wind.speed} miles/hour</span>
-          </div>
-          </div>
-      }
-      {
-          (data.cod === "404") && 
-          <div>
+          </SmallDetails>
+          <IconContainer>
+            <Icon
+              src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+              width={150}
+              height={150}
+              alt='weather condition'
+            />
+            <h1>
+              {parseInt(data.main.temp)}&deg;<sup>F</sup>
+            </h1>
+          </IconContainer>
+          <Condition>{data.weather[0].main}</Condition>
+          <Description>
+            <Details>
+              Humidity <span>{data.main.humidity} %</span>
+            </Details>
+            <Details>
+              Wind speed <span>{data.wind.speed} m/hr</span>
+            </Details>
+          </Description>
+        </WeatherCard>
+      )}
+      {data.cod === '404' && (
+        <Error>
           <h4>{data.message}</h4>
-          </div>
-      }
+        </Error>
+      )}
     </div>
   ) : null
 }
