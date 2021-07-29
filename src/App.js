@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import CurrentWeather from "./components/CurrentWeather";
 import UserInput from "./components/UserInput";
 
 
@@ -23,7 +24,8 @@ function App() {
     <Container>
       <Main>
       <UserInput value={input} addInput={setInput} />
-      <h1>{input}</h1>
+      <CurrentWeather city={input}/>
+      
         </Main>
 
     </Container>

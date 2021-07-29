@@ -40,7 +40,7 @@ if(val === ""){
 alert("Input is empty!")
 }else{
     addInput(val);
-    inputRef.current.value = "";
+    //inputRef.current.value = "";
 }
 }
     return (
