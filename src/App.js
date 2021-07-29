@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import CurrentWeather from "./components/CurrentWeather";
+import Forecast from "./components/Forecast";
 import UserInput from "./components/UserInput";
 
 
@@ -12,7 +13,7 @@ align-items: center;
 `
 
 const Main = styled.main`
-width:60%;
+width:70%;
 display:flex;
 flex-direction:column;
 margin: 4rem 0;

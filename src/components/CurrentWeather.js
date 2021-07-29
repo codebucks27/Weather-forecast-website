@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import Forecast from './Forecast'
 
 const WeatherCard = styled.div`
   display: flex;
@@ -73,8 +74,10 @@ const CurrentWeather = ({ city }) => {
 
   return data ? (
     <div>
+
       {data.cod === 200 && (
-        <WeatherCard>
+        <div>
+          <WeatherCard>
           <SmallDetails>
             {new Date(data.dt * 1000).toLocaleTimeString()},{' '}
             {new Date(data.dt * 1000).toDateString()}
@@ -100,12 +103,15 @@ const CurrentWeather = ({ city }) => {
             </Details>
           </Description>
         </WeatherCard>
+        <Forecast lat={data.coord.lat} lon={data.coord.lon}/>
+        </div>
       )}
       {data.cod === '404' && (
         <Error>
           <h4>{data.message}</h4>
         </Error>
       )}
+      
     </div>
   ) : null
 }
