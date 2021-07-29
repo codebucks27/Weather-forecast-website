@@ -5,10 +5,14 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  padding:1rem;
+  border-radius: 20px;
+  background-color: ${props => props.active ? '#5596F6' :'transparent'};
+  color: ${props => props.active ? '#fff' :'#000'};
 `
 const SmallDetails = styled.span`
   font-size: 0.8rem;
-  color: #808080;
+  
   text-align: center;
 `
 const IconContainer = styled.div`
@@ -25,16 +29,16 @@ const Details = styled.div`
 
   align-items: center;
   font-size: 0.8rem;
-  color: #808080;
+ 
   span {
     font-size: 1rem;
-    color: #000;
+    font-weight: 500;
   }
 `
 
-const WeatherCard = ({ data }) => {
+const WeatherCard = ({ val, data, changeValue, keyprop }) => {
   return (
-    <Card>
+    <Card active={val === keyprop} onClick={() => changeValue(keyprop)}>
       {new Date().setHours(0, 0, 0, 0) ===
       new Date(data.dt * 1000).setHours(0, 0, 0, 0) ? (
         <SmallDetails>Today</SmallDetails>
@@ -44,7 +48,7 @@ const WeatherCard = ({ data }) => {
             .toLocaleString('default', { month: 'long' })
             .slice(0, 3)}{' '}
           &nbsp;
-          {new Date(data.dt * 1000).getDay()}
+          {new Date(data.dt * 1000).getDate()}
         </SmallDetails>
       )}
 
