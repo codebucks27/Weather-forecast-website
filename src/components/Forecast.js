@@ -27,8 +27,9 @@ const Forecast = ({ lat, lon }) => {
     let temp = []
     let labels = []
     data.daily.map((d) => {
-      temp.push(parseInt(d.temp.day))
       labels.push(d.dt)
+      return temp.push(parseInt(d.temp.day))
+      
     })
 
     return { temp, labels }

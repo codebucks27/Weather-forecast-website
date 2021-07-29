@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React  from 'react'
 import { Line } from 'react-chartjs-2'
 
 import ChartDataLabels from 'chartjs-plugin-datalabels'
