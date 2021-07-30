@@ -6,7 +6,7 @@ const WeatherCard = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  width: 30%;
+  width: 25%;
   border: 1px solid #808080;
   border-radius: 20px;
   padding: 1rem;

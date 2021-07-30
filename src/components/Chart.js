@@ -6,8 +6,8 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   position: absolute;
-  right: 0;
-  top: 5rem;
+  right: 2rem;
+  top: 3rem;
   width: 60%;
 `
 const Title = styled.span`
@@ -43,6 +43,7 @@ const Chart = ({ dataset, val }) => {
       <Title>Temparature</Title>
       <Line
         data={state}
+      
         plugins={[ChartDataLabels]}
         options={{
           events: [],
@@ -58,6 +59,14 @@ const Chart = ({ dataset, val }) => {
           animation: {
             duration: 0,
           },
+          layout: {
+            padding: {
+                left: 10,
+                right: 10,
+                
+               
+            }
+        },
           plugins: {
             datalabels: {
               display: function (context) {
@@ -79,10 +88,7 @@ const Chart = ({ dataset, val }) => {
             },
           },
 
-          legend: {
-            display: true,
-            position: 'right',
-          },
+          
           scales: {
             x: {
               display: false,
