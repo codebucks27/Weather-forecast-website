@@ -9,6 +9,10 @@ const Card = styled.div`
   border-radius: 20px;
   background-color: ${props => props.active ? '#5596F6' :'transparent'};
   color: ${props => props.active ? '#fff' :'#000'};
+
+  @media only screen and (max-width: 900px) {
+  min-width:8rem;
+}
 `
 const SmallDetails = styled.span`
   font-size: 0.8rem;

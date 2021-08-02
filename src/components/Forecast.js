@@ -9,6 +9,16 @@ const Container = styled.div`
   width: 100%;
   align-items: center;
   margin-top: 2rem;
+
+  @media only screen and (max-width: 900px) {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 640px) {
+  margin-top: 22rem;
+
+}
 `
 
 const Forecast = ({ lat, lon }) => {

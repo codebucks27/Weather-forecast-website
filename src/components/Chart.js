@@ -9,6 +9,18 @@ const Container = styled.div`
   right: 2rem;
   top: 3rem;
   width: 60%;
+
+  @media only screen and (max-width: 640px) {
+    width: 100%;
+    right: 0;
+    top: 25%;
+
+}
+@media only screen and (max-width: 380px) {
+    
+    top: 30%;
+      
+  }
 `
 const Title = styled.span`
   color: #808080;
