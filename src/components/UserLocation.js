@@ -51,7 +51,7 @@ const errors =(err) => {
         'Geolocation api is not available in your device, you have to input manually'
       )
     }
-  }, [])
+  }, [success])
 
   return <div></div>
 }
