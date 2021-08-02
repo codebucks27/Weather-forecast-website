@@ -51,7 +51,8 @@ const errors =(err) => {
         'Geolocation api is not available in your device, you have to input manually'
       )
     }
-  }, [success])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ ])
 
   return <div></div>
 }
